@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="info.schnatterer.musicbrainzws2.java" level="project" />
   </component>
 </module>

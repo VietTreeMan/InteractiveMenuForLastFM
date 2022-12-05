@@ -43,18 +43,35 @@ public class Test extends PApplet {
     }
 
     public void draw(){
-        background(232, 214, 174);
-        fill(173, 172, 168);
+        if(screen==0) {
+            background(232, 214, 174);
+            fill(173, 172, 168);
+            rect(buttonX, buttonY, buttonxSize, buttonySize);
+            textSize(50);
+            fill(0, 0, 0);
+
+            text("TYPE NAME IN CONSOLE! CLICK NEXT WHEN DONE", 275, 150);
+
+            textSize(50);
+            text("NEXT", buttonX+50, buttonY+65);
+
+            if(mousePressed) {
+                if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
+
+                    screen++;
+                }
+            }
+
+        } else if(screen==1){
+            background(0, 0, 0);
+        }
         //image(vinyl,1100,400,1000,1000);
-        rect(rectX, rectY, rectxSize, rectySize);
-        rect(buttonX, buttonY, buttonxSize, buttonySize);
-
-        textSize(75);
-        fill(0, 0, 0);
-        text("TYPE NAME IN CONSOLE! CLICK NEXT WHEN DONE", 500, 150);
+//        rect(rectX, rectY, rectxSize, rectySize);
 
 
+    }
 
+    public void mousePressed(){
 
     }
 
