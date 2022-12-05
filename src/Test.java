@@ -1,11 +1,62 @@
+import processing.core.PApplet;
 import de.umass.lastfm.*;
 
 import java.text.DateFormat;
 import java.util.Collection;
 import java.util.Scanner;
 
-public class Test {
+public class Test extends PApplet {
     static Scanner s = new Scanner(System.in);
+
+
+    public void settings(){
+        size(1500, 900);
+    }
+    float buttonX;
+    float buttonY;
+    float buttonxSize;
+    float buttonySize;
+    float rectxSize;
+    float rectySize;
+    float rectX;
+    float rectY;
+    PImage vinyl;
+    public void setup(){
+        //initiate and set variables
+
+
+        //vinyl = loadImage("vinyl.png");
+
+        buttonxSize  = 200;
+        buttonySize = 100;
+        buttonX = (width/2)-(buttonxSize/2);
+        buttonY = 600;
+
+        rectxSize  = 300;
+        rectySize = 150;
+        rectX = (width/2)-(rectxSize/2);
+        rectY = 200;
+
+
+
+
+    }
+
+    public void draw(){
+        background(232, 214, 174);
+        fill(173, 172, 168);
+        //image(vinyl,1100,400,1000,1000);
+        rect(rectX, rectY, rectxSize, rectySize);
+        rect(buttonX, buttonY, buttonxSize, buttonySize);
+
+        textSize(75);
+        fill(0, 0, 0);
+        text("TYPE NAME IN CONSOLE! CLICK NEXT WHEN DONE", 500, 150);
+
+
+
+
+    }
 
 
     public static int getNum(){
@@ -14,6 +65,9 @@ public class Test {
     }
 
     public static void main(String[] args){
+
+        PApplet.main("Test");
+
         int valid = -1;
         while(valid == -1) {
             //valid is an int for the while loop. The while loop makes sure the try catch continues running until it works. If try doesn't completely run,
@@ -27,7 +81,13 @@ public class Test {
                 String period = "";
 
 
-                System.out.println("What is your Last FM Name?"); //EX USERNAMES: "Roy19110"   "fales_"   "usrname7"
+                System.out.println("What is your Last FM Name?");
+                System.out.println("EXAMPLE USERNAMES:");
+                System.out.println("Roy19110");
+                System.out.println("silverhawk79");
+                System.out.println("usrname7");
+                System.out.println("Amixor33");
+
                 user = s.nextLine();
 
                 System.out.println("What period of time would you like to observe?");
@@ -149,26 +209,26 @@ public class Test {
                     Artist tempArtist = userArtists.get(artistCount);
                     Collection<Artist> recArtistCollection = tempArtist.getSimilar(tempArtist.getName(), 21, key);
 
-                    //changing the generated collection of recommended songs into an arraylist to make it more easily accessible
+                    //changing the generated collection of recommended artists into an arraylist to make it more easily accessible
                     ArrayList<Artist> recommendedArtists = new ArrayList<>(recArtistCollection);
 
-                    //large if statement is to make sure that firstly, the recommendedTracks array is not null
+                    //the large if statement is to make sure that firstly, the recommendedArtists array is not null
                     if (recommendedArtists.size() > 0) {
-                        //this int iterates through the tracks in the recommended arraylist
+                        //this int iterates through the artists in the recommended arraylist
                         int recArtistCount = 0;
 
-                        //this boolean keeps track whether the current recommended song is the same song as any of the user's top songs
+                        //this boolean keeps track whether the current recommended artist is the same artist as any of the user's top artists
                         boolean sameAsTopArtists = false;
 
-                        //for each loop to track if current rec song is the same as a song in top songs
-                        //if boolean is true, that means current rec song also appears in user's top songs
+                        //for each loop to track if current rec artist is the same as an artist in top artists
+                        //if boolean is true, that means current rec artist also appears in user's top artists (or was already recommended)
                         for (Artist artist : Artists) {
                             if (artist.getName().equals(recommendedArtists.get(recArtistCount).getName())) {
                                 sameAsTopArtists = true;
                             }
                         }
 
-                        //keeps looping through recommended songs by adding to recTrackCount until boolean is false
+                        //keeps looping through recommended artists by adding to recTrackCount until boolean is false
                         while (sameAsTopArtists == true) {
                             recArtistCount++;
                             sameAsTopArtists = false;
@@ -178,7 +238,7 @@ public class Test {
                                 }
                             }
 
-                            //also making sure that the song recommended is a song that has already been recommended
+                            //also making sure that the artist recommended is an artist that has already been recommended
                             for (Artist name : topRecArtists) {
                                 if (name.getName().equals(recommendedArtists.get(recArtistCount).getName())) {
                                     sameAsTopArtists = true;
@@ -186,8 +246,8 @@ public class Test {
                             }
 
                         }
-                        //only when boolean is false (rec song is not the same as a top song) do we then add that rec song we generated
-                        //into the topRecTracks arraylist
+                        //only when boolean is false (rec artist is not the same as a top artist or another rec artist) do we then add that rec artist we generated
+                        //into the topRecArtists arraylist
                         topRecArtists.add(recommendedArtists.get(recArtistCount));
                         count1++;
                     }
