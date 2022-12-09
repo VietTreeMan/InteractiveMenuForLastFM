@@ -68,29 +68,17 @@ public class Test extends PApplet {
 
         } else if(screen==1){
             background(232, 214, 174);
-            fill(232, 214, 174);
-            rect(50, 400, 300, 75);
-            rect(50, 500, 300, 75);
-            rect(50, 600, 300, 75);
-            rect(115, 700, 500, 75);
-            rect(115, 800, 500, 75);
-
-            rect(375, 400, 300, 75);
-            rect(375, 500, 300, 75);
-            rect(375, 600, 300, 75);
-
 
             fill(0, 0, 0);
             text("Wrapped of " + period, 100, 375);
-            text("Top Songs",60, 450);
-            text("Top Artists",60, 550);
-            text("Top Albums",60, 650);
-
-            text("Reccomended Artists",120, 750);
-            text("Reccomended Songs",120, 850);
 
 
             //checks for press of "Top Songs" button
+
+            fill(232, 214, 174);
+            rect(50, 400, 300, 75);
+            fill(0, 0, 0);
+            text("Top Songs",60, 450);
             if(mousePressed) {
                 if (mouseX >= 50 && mouseX <= (50 + 300) && mouseY >= 400 && mouseY <= (400 + 75)) {
                     screen = 2;
@@ -98,6 +86,11 @@ public class Test extends PApplet {
             }
 
             //checks for press of "Top Artists" button
+
+            fill(232, 214, 174);
+            rect(50, 500, 300, 75);
+            fill(0, 0, 0);
+            text("Top Artists",60, 550);
             if(mousePressed) {
                 if (mouseX >= 50 && mouseX <= (50 + 300) && mouseY >= 500 && mouseY <= (500 + 75)) {
 
@@ -106,6 +99,10 @@ public class Test extends PApplet {
             }
 
             //checks for "top album" button
+            fill(232, 214, 174);
+            rect(50, 600, 300, 75);
+            fill(0, 0, 0);
+            text("Top Albums",60, 650);
             if(mousePressed) {
                 if (mouseX >= 50 && mouseX <= (50 + 300) && mouseY >= 600 && mouseY <= (600 + 75)) {
 
@@ -114,6 +111,10 @@ public class Test extends PApplet {
             }
 
             //checks for fun details button
+            fill(232, 214, 174);
+            rect(375, 400, 300, 75);
+            fill(0, 0, 0);
+            text("Fun Details", 380, 450);
             if(mousePressed) {
                 if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
 
@@ -122,14 +123,24 @@ public class Test extends PApplet {
             }
 
             //checks for top artists of country
+
+            fill(232, 214, 174);
+            rect(375, 500, 300, 75);
+            fill(0, 0, 0);
+            text("Top Artists(USA)", 380, 550);
             if(mousePressed) {
                 if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
 
                     screen = 6;
                 }
             }
-
+            
             //checks for top songs of country
+
+            fill(232, 214, 174);
+            rect(375, 600, 300, 75);
+            fill(0, 0, 0);
+            text("Top Songs(USA)", 380, 650);
             if(mousePressed) {
                 if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
 
@@ -138,6 +149,11 @@ public class Test extends PApplet {
             }
 
             //checks for reccomended artists button
+
+            fill(232, 214, 174);
+            rect(115, 700, 500, 75);
+            fill(0, 0, 0);
+            text("Reccomended Artists",120, 750);
             if(mousePressed) {
                 if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
 
@@ -146,6 +162,10 @@ public class Test extends PApplet {
             }
 
             //checks for reccomended songs button
+            fill(232, 214, 174);
+            rect(115, 800, 500, 75);
+            fill(0, 0, 0);
+            text("Reccomended Songs",120, 850);
             if(mousePressed) {
                 if (mouseX >= buttonX && mouseX <= (buttonX + buttonxSize) && mouseY >= buttonY && mouseY <= (buttonY + buttonySize)) {
 
@@ -154,21 +174,152 @@ public class Test extends PApplet {
             }
 
         } else if(screen == 2){
-            background(0, 0, 0);
+            //TOP SONGS PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
             fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
+            text("Top 5 Songs of " + period,0,75);
+
+            int lineBreak = 0;
+            for (int i = 0; i < 5; i++) {
+                text(topTracks.get(i), 100,200+lineBreak);
+                lineBreak = lineBreak + 100;
+            }
+
         } else if(screen == 3){
-            background(0, 0, 0);
+            //TOP ARTISTS PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+            text("Top 5 Artists of " + period,0,75);
+            int lineBreak = 0;
+            for (int i = 0; i < 5; i++) {
+                text(topArtists.get(i), 100, 200 + lineBreak);
+                lineBreak = lineBreak + 100;
+
+            }
         } else if(screen == 4){
-            background(0, 0, 0);
+            //TOP ALBUM PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
         } else if(screen == 5){
-            background(0, 0, 0);
+            //FUN DETAILS PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
         } else if(screen == 6){
-            background(0, 0, 0);
+            //TOP ARTISTS OF THE COUNTRY PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
         } else if(screen == 7){
-            background(0, 0, 0);
+            //TOP SONGS OF THE COUNTRY PAGE
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
         } else if(screen == 8){
-            background(0, 0, 0);
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
+
         } else if(screen == 9){
+            background(232, 214, 174);
+            fill(232, 214, 174);
+
+            //HOME SCREEN BUTTON
+            fill(232, 214, 174);
+            rect(600, 800, 375, 75);
+            fill(0, 0, 0);
+            text("HOME SCREEN",605, 850);
+            if(mousePressed) {
+                if (mouseX >= 115 && mouseX <= (600 + 375) && mouseY >= 800 && mouseY <= (800 + 75)) {
+                    screen = 1;
+                }
+            }
+            //--------------------------------------------------------------------------------------------
 
         }
         //image(vinyl,1100,400,1000,1000);
